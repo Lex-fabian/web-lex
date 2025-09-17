@@ -3,9 +3,17 @@ import './style.css'
 import App from './App.vue'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { faLaptopCode, faMobileAlt, faDatabase, faUsers, faFileAlt, faCodeBranch } from '@fortawesome/free-solid-svg-icons'
+import {
+  faLaptopCode, faMobileAlt, faDatabase, faUsers, faFileAlt,
+  faCodeBranch, faCogs, faCode, faDesktop, faVials, faTools,
+  faProjectDiagram, faServer, faBars, faTimes
+} from '@fortawesome/free-solid-svg-icons'
 
-library.add(faLaptopCode, faMobileAlt, faDatabase, faUsers, faFileAlt, faCodeBranch)
+library.add(
+  faLaptopCode, faMobileAlt, faDatabase, faUsers, faFileAlt,
+  faCodeBranch, faCogs, faCode, faDesktop, faVials, faTools,
+  faProjectDiagram, faServer, faBars, faTimes
+)
 
 const app = createApp(App)
 

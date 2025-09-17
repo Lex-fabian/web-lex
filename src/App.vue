@@ -2,6 +2,12 @@
 import { ref } from 'vue';
 import lexyUrl from './assets/lexy.png';
 
+const isMenuOpen = ref(false);
+
+const toggleMenu = () => {
+  isMenuOpen.value = !isMenuOpen.value;
+};
+
 const services = ref([
   { icon: 'laptop-code', title: 'Lading Page / Página Web', description: 'Diseño profesional de páginas web y landing pages personalizadas con código o WordPress, enfocadas en resultados.' },
   { icon: 'code-branch', title: 'Sistema Web', description: 'Desarrollo de sistemas web con interfaces intuitivas y profesionales, optimizados para tu negocio.' },
@@ -15,7 +21,7 @@ const services = ref([
 const skills = ref([
   { icon: 'database', title: 'Base de Datos', items: ['MariaDB', 'MySQL', 'SQLite', 'Firebase', 'MongoDB', 'SQL Server'] },
   { icon: 'cogs', title: 'Frameworks', items: ['Laravel', 'CodeIgniter', 'Vue.js', 'React.js', 'Node.js', 'Django'] },
-  { icon: 'code', title: 'Lenguajes', items: ['PHP', 'JavaScript', 'C#', 'Java'] },
+  { icon: 'code', title: 'Lenguajes', items: ['PHP', 'JavaScript', 'C#', 'Java', 'Python'] },
   { icon: 'mobile-alt', title: 'Móvil', items: ['Xamarin', 'MAUI', 'Flutter'] },
   { icon: 'desktop', title: 'Escritorio', items: ['Windows Forms', '.NET'] }
 ]);
@@ -29,8 +35,10 @@ const tools = ref([
 ]);
 
 const experiences = ref([
-  { title: 'Desarrollador FullStack', description: 'Análisis, diseño y desarrollo de Sistema de junta de agua con Facturación Electrónica.' },
-  { title: 'Creación de Base de Datos', description: 'Desarrollo y documentación de la base de datos de un core financiero, incluyendo el diccionario de datos.' }
+  { title: 'BotiTrack', description: 'App móvil para la gestión y venta de licores.' },
+  { title: 'Hydros Web', description: 'Sistema de junta de agua con Facturación Electrónica.' },
+  { title: 'Core Financiero', description: 'Desarrollo y documentación de la base de datos de un core financiero, incluyendo el diccionario de datos.' },
+  { title: 'Calendar Doc', description: 'Sistema de escritorio para agendar citas en un centro odontologico.'}
 ]);
 
 const contactForm = ref({
@@ -57,9 +65,12 @@ const handleSubmit = () => {
 <template>
   <div class="contenedor-principal">
     <header class="encabezado">
-      <img :src="lexyUrl" alt="Logo de Lexy" />
-      <nav>
-        <ul>
+      <img :src="lexyUrl" alt="Logo de Lexy" class="logo-encabezado" />
+      <button class="menu-hamburguesa" @click="toggleMenu" aria-label="Abrir menú">
+        <font-awesome-icon :icon="isMenuOpen ? 'times' : 'bars'" />
+      </button>
+      <nav :class="{ 'menu-abierto': isMenuOpen }">
+        <ul @click="toggleMenu">
           <li><a href="#inicio">Inicio</a></li>
           <li><a href="#servicios">Servicios</a></li>
           <li><a href="#contacto">Contacto</a></li>
@@ -95,9 +106,7 @@ const handleSubmit = () => {
         <h2 class="titulo-seccion">Sobre Mí</h2>
 
         <div class="informacion-personal">
-          <p><strong>Estudios:</strong> Tecnólogo en Desarrollo de Software</p>
-          <p><strong>Edad:</strong> 21 años</p>
-          <p><strong>Experiencia:</strong> 1 año y medio</p>
+          <p><strong>Hola, soy Lex. Ofrezco mis servicios para cumplir tus necesidades del futuro, quieres saber mas, escribeme</strong> </p>
         </div>
 
         <div class="habilidades">
