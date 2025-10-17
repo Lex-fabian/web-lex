@@ -30,17 +30,6 @@
 </template>
 
 <script setup>
-defineProps({
-  servicio: {
-    type: Object,
-    required: true
-  },
-  indice: {
-    type: Number,
-    default: 0
-  }
-})
-
 const props = defineProps({
   servicio: {
     type: Object,
@@ -166,7 +155,7 @@ const cotizarProyecto = () => {
 
 .boton-cotizar {
   width: 100%;
-  background: linear-gradient(135deg, var(--color-primario), var(--color-secundario));
+  background: linear-gradient(135deg, #3b82f6, #1e40af);
   color: white;
   border: none;
   padding: 1rem;
@@ -180,6 +169,10 @@ const cotizarProyecto = () => {
   gap: 0.5rem;
   position: relative;
   overflow: hidden;
+}
+
+.tema-oscuro .boton-cotizar {
+  background: linear-gradient(135deg, #60a5fa, #3b82f6);
 }
 
 .boton-cotizar::before {
@@ -199,7 +192,11 @@ const cotizarProyecto = () => {
 
 .boton-cotizar:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(26, 35, 126, 0.3);
+  box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
+}
+
+.tema-oscuro .boton-cotizar:hover {
+  box-shadow: 0 8px 25px rgba(96, 165, 250, 0.3);
 }
 
 .efecto-hover {
