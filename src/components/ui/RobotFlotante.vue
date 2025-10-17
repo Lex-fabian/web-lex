@@ -2,13 +2,17 @@
   <div class="robot-flotante" :class="{ 'expandido': mostrandoMensaje }">
     <div v-if="mostrandoMensaje" class="mensaje-robot">
       <p>¡Hola! 👋</p>
-      <p>Para más información sobre mis servicios, ¡haz clic aquí!</p>
+      <p>¡Haz clic en mí para contactar por WhatsApp! 👇</p>
       <button @click="cerrarMensaje" class="boton-cerrar">&times;</button>
+    </div>
+    
+    <div class="indicador-dedo" :class="{ 'visible': mostrandoMensaje }">
+      👆
     </div>
     
     <div 
       class="robot-avatar" 
-      @click="alternarMensaje"
+      @click="abrirWhatsApp"
       :class="{ 'pulsando': pulsando }"
     >
       <div class="robot-cara">
@@ -31,11 +35,11 @@ const mostrandoMensaje = ref(false)
 const pulsando = ref(false)
 const parpadeando = ref(false)
 
-const alternarMensaje = () => {
-  mostrandoMensaje.value = !mostrandoMensaje.value
-  if (!mostrandoMensaje.value) {
-    window.open('https://wa.me/593994755647?text=¡Hola! Me interesa conocer más sobre tus servicios', '_blank')
+const abrirWhatsApp = () => {
+  if (mostrandoMensaje.value) {
+    mostrandoMensaje.value = false
   }
+  window.open('https://wa.me/593994755647?text=¡Hola! Me interesa conocer más sobre tus servicios', '_blank')
 }
 
 const cerrarMensaje = () => {
@@ -62,12 +66,25 @@ const iniciarAnimaciones = () => {
 
 onMounted(() => {
   iniciarAnimaciones()
+  
+  // Mostrar mensaje inicial después de 3 segundos
   setTimeout(() => {
     mostrandoMensaje.value = true
+    // Ocultar mensaje después de 5 segundos
     setTimeout(() => {
       mostrandoMensaje.value = false
-    }, 4000)
+    }, 5000)
   }, 3000)
+  
+  // Repetir el mensaje cada 30 segundos
+  setInterval(() => {
+    if (!mostrandoMensaje.value) {
+      mostrandoMensaje.value = true
+      setTimeout(() => {
+        mostrandoMensaje.value = false
+      }, 5000)
+    }
+  }, 30000)
 })
 </script>
 
@@ -128,6 +145,28 @@ onMounted(() => {
 
 .boton-cerrar:hover {
   opacity: 1;
+}
+
+.indicador-dedo {
+  position: absolute;
+  bottom: 90px;
+  right: 10px;
+  font-size: 1.5rem;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+  animation: apuntarRobot 1.5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.indicador-dedo.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes apuntarRobot {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
 }
 
 .robot-avatar {

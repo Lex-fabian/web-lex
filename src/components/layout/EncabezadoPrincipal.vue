@@ -2,7 +2,9 @@
   <header class="encabezado-moderno">
     <div class="contenedor-encabezado">
       <div class="logo-seccion">
-        <img :src="logoUrl" alt="Lex Portfolio" class="logo-principal">
+        <a href="#inicio" @click="cerrarMenu" class="logo-enlace">
+          <img :src="logoUrl" alt="Lex Portfolio" class="logo-principal">
+        </a>
       </div>
       
       <nav class="navegacion-principal" :class="{ 'activa': menuAbierto }">
@@ -95,6 +97,11 @@ const cerrarMenu = () => {
   height: 50px;
   width: auto;
   transition: transform 0.3s ease;
+}
+
+.logo-enlace {
+  display: inline-block;
+  text-decoration: none;
 }
 
 .logo-principal:hover {
