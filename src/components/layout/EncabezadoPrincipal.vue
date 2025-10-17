@@ -180,9 +180,13 @@ const cerrarMenu = () => {
 .linea-hamburguesa {
   width: 25px;
   height: 3px;
-  background: var(--color-texto-primario);
+  background: #333333;
   transition: all 0.3s ease;
   border-radius: 2px;
+}
+
+.tema-oscuro .linea-hamburguesa {
+  background: #ffffff;
 }
 
 .linea-hamburguesa.activa:nth-child(1) {
@@ -210,6 +214,12 @@ const cerrarMenu = () => {
     opacity: 0;
     visibility: hidden;
     transition: all 0.3s ease;
+    z-index: 999;
+  }
+
+  .tema-oscuro .navegacion-principal {
+    background: rgba(18, 18, 18, 0.98);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
 
   .navegacion-principal.activa {
@@ -228,10 +238,19 @@ const cerrarMenu = () => {
     display: block;
     padding: 1rem 0;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    font-size: 1.1rem;
+  }
+
+  .tema-oscuro .enlace-navegacion {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
 
   .boton-menu-movil {
     display: flex;
+  }
+
+  .contenedor-encabezado {
+    padding: 1rem;
   }
 }
 </style>
