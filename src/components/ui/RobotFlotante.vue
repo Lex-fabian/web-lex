@@ -2,16 +2,12 @@
   <div class="robot-flotante" :class="{ 'expandido': mostrandoMensaje }">
     <div v-if="mostrandoMensaje" class="mensaje-robot">
       <p>¡Hola! 👋</p>
-      <p>¡Haz clic en mí para contactar por WhatsApp! 👇</p>
+      <p>¡Haz clic en mí para contactar por WhatsApp!</p>
       <button @click="cerrarMensaje" class="boton-cerrar">&times;</button>
     </div>
-    
-    <div class="indicador-dedo" :class="{ 'visible': mostrandoMensaje }">
-      👆
-    </div>
-    
-    <div 
-      class="robot-avatar" 
+
+    <div
+      class="robot-avatar"
       @click="abrirWhatsApp"
       :class="{ 'pulsando': pulsando }"
     >
