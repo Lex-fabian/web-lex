@@ -1,12 +1,75 @@
-/* --- Variables y Estilos Globales --- */
 :root {
-  --azul-noche: #0a192f;
-  --azul-marino: #172a45;
-  --azul-claro: #30a0e0;
-  --blanco-hueso: #ccd6f6;
-  --gris-azulado: #8892b0;
-  --fuente-principal: "SF Pro Text", "Helvetica Neue", Helvetica, Arial,
-    sans-serif;
+  /* Paleta Principal - Modo Claro */
+  --blanco-puro: #ffffff;
+  --blanco-suave: #fafbfc;
+  --gris-ultra-claro: #f8fafc;
+  --gris-claro: #e2e8f0;
+  --gris-medio: #64748b;
+  --gris-oscuro: #334155;
+  --negro-suave: #1e293b;
+  --negro-puro: #000000;
+  
+  --azul-oscuro: #0f172a;
+  --azul-medio: #1e40af;
+  --azul-celeste: #3b82f6;
+  --azul-claro: #60a5fa;
+  --celeste-suave: #93c5fd;
+  
+  /* Variables del Sistema - Modo Claro */
+  --color-fondo-principal: var(--blanco-puro);
+  --color-fondo-secundario: var(--blanco-suave);
+  --color-fondo-terciario: var(--gris-ultra-claro);
+  --color-fondo-gradiente: linear-gradient(135deg, var(--blanco-puro) 0%, var(--blanco-suave) 100%);
+  
+  --color-texto-principal: var(--negro-suave);
+  --color-texto-secundario: var(--gris-medio);
+  --color-texto-terciario: var(--gris-claro);
+  
+  --color-acento-principal: var(--azul-celeste);
+  --color-acento-secundario: var(--azul-claro);
+  --color-acento-hover: var(--azul-medio);
+  
+  --color-borde-sutil: var(--gris-claro);
+  --color-borde-medio: var(--gris-medio);
+  
+  
+  /* Efectos y Transiciones */
+  --radio-borde-pequeno: 8px;
+  --radio-borde-medio: 12px;
+  --radio-borde-grande: 20px;
+  
+  --sombra-suave: 0 2px 8px rgba(0, 0, 0, 0.04);
+  --sombra-media: 0 4px 16px rgba(0, 0, 0, 0.08);
+  --sombra-intensa: 0 8px 32px rgba(0, 0, 0, 0.12);
+  
+  --transicion-rapida: all 0.15s ease;
+  --transicion-suave: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transicion-lenta: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  --fuente-principal: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.tema-oscuro {
+  /* Paleta Modo Oscuro */
+  --color-fondo-principal: var(--azul-oscuro);
+  --color-fondo-secundario: #0c1220;
+  --color-fondo-terciario: #162033;
+  --color-fondo-gradiente: linear-gradient(135deg, var(--azul-oscuro) 0%, #0c1220 100%);
+  
+  --color-texto-principal: var(--blanco-puro);
+  --color-texto-secundario: var(--celeste-suave);
+  --color-texto-terciario: var(--gris-medio);
+  
+  --color-acento-principal: var(--azul-celeste);
+  --color-acento-secundario: var(--celeste-suave);
+  --color-acento-hover: var(--azul-claro);
+  
+  --color-borde-sutil: rgba(59, 130, 246, 0.2);
+  --color-borde-medio: rgba(59, 130, 246, 0.4);
+  
+  --sombra-suave: 0 4px 20px rgba(0, 0, 0, 0.4);
+  --sombra-media: 0 8px 30px rgba(0, 0, 0, 0.6);
+  --sombra-intensa: 0 15px 40px rgba(0, 0, 0, 0.8);
 }
 
 * {
@@ -15,490 +78,71 @@
   box-sizing: border-box;
 }
 
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
 body {
-  font-family: "SF Pro Text", "SF Pro Icons", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  color: var(--blanco-hueso);
-  background-color: var(--azul-noche);
-  background-image: linear-gradient(
-      to top,
-      rgba(13, 25, 42, 0.95),
-      rgba(13, 25, 42, 1)
-    ),
-    /* Efecto de olas sutil */ radial-gradient(ellipse at top, var(--azul-marino), transparent),
-    radial-gradient(ellipse at bottom, var(--azul-claro), transparent);
-  background-repeat: no-repeat;
-  background-size: 100% 500px, 100% 100px, 100% 100px;
-  background-position: top, bottom, top;
+  font-family: var(--fuente-principal);
   line-height: 1.6;
+  color: var(--color-texto-principal);
+  background: var(--color-fondo-gradiente);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  transition: var(--transicion-suave);
 }
 
-.contenedor-principal {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 2rem;
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  line-height: 1.2;
 }
 
-/* --- Encabezado --- */
-.encabezado {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1.5rem 0;
-  position: sticky;
-  top: 0;
-  background-color: rgba(10, 25, 47, 0.85);
-  backdrop-filter: blur(10px);
-  z-index: 1000;
-  height: 80px;
-}
-
-.menu-hamburguesa {
-  display: none;
-  background: none;
-  border: none;
-  color: var(--blanco-hueso);
-  font-size: 1.8rem;
-  cursor: pointer;
-  z-index: 1101;
-}
-
-.logo-encabezado {
-  height: 50px;
-  width: auto;
-}
-
-.encabezado nav ul {
-  display: flex;
-  list-style: none;
-  gap: 2rem;
-}
-
-.encabezado nav a {
+a {
+  color: var(--color-acento);
   text-decoration: none;
-  color: white;
-  font-size: 1.1rem;
   transition: color 0.3s ease;
 }
 
-.encabezado nav a:hover {
-  color: var(--azul-claro);
-}
-
-/* --- Sección Principal (Presentación) --- */
-.seccion-principal {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: calc(100vh - 80px); /* Restar altura del encabezado */
-  text-align: center;
-}
-
-.presentacion {
-  max-width: 600px;
-}
-
-.presentacion img {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  border: 3px solid var(--azul-claro);
-  margin-bottom: 1.5rem;
-}
-
-.presentacion p {
-  font-size: 1.2rem;
-  margin-bottom: 2rem;
-  color: var(--gris-azulado);
-}
-
-.boton-contacto {
-  display: inline-block;
-  background-color: transparent;
-  border: 1px solid var(--azul-claro);
-  color: var(--azul-claro);
-  padding: 0.75rem 1.5rem;
-  border-radius: 5px;
-  text-decoration: none;
-  font-size: 1.1rem;
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.boton-contacto:hover {
-  background-color: rgba(48, 160, 224, 0.1);
-}
-
-/* --- Títulos de Sección --- */
-.titulo-seccion {
-  text-align: center;
-  font-size: 2.5rem;
-  color: var(--blanco-hueso);
-  margin-bottom: 3rem;
-  position: relative;
-  padding-bottom: 0.5rem;
-}
-
-.titulo-seccion::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80px;
-  height: 3px;
-  background-color: var(--azul-claro);
-}
-
-.subtitulo-seccion {
-  text-align: center;
-  font-size: 2rem;
-  color: var(--blanco-hueso);
-  margin-bottom: 2.5rem;
-}
-
-/* --- Contenedor de Tarjetas Genérico --- */
-.contenedor-tarjetas {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
-  justify-content: center;
-}
-
-/* --- Tarjetas de Servicios --- */
-.seccion-servicios {
-  padding: 4rem 0;
-}
-
-.seccion-servicios .tarjeta {
-  background-color: var(--azul-marino);
-  padding: 2rem;
-  border-radius: 8px;
-  text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border: 1px solid transparent;
-}
-
-.seccion-servicios .tarjeta:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-  border-color: var(--azul-claro);
-}
-
-.seccion-servicios .icono-tarjeta {
-  font-size: 3rem;
-  color: var(--azul-claro);
-  margin-bottom: 1rem;
-}
-
-.seccion-servicios .tarjeta h3 {
-  font-size: 1.4rem;
-  margin-bottom: 0.5rem;
-  color: var(--blanco-hueso);
-}
-
-.seccion-servicios .tarjeta p {
-  font-size: 1rem;
-  color: var(--gris-azulado);
-}
-
-/* --- Sección Sobre Mí --- */
-.seccion-sobre-mi {
-  padding: 4rem 0;
-}
-
-.informacion-personal {
-  text-align: center;
-  margin-bottom: 4rem;
-  font-size: 1.1rem;
-  color: var(--gris-azulado);
-}
-
-.informacion-personal p {
-  margin-bottom: 0.5rem;
-}
-
-.habilidades,
-.herramientas {
-  margin-bottom: 4rem;
-}
-
-.tarjeta-habilidad {
-  background-color: var(--azul-marino);
-  padding: 1.5rem;
-  border-radius: 8px;
-  text-align: center;
-}
-
-.tarjeta-habilidad h4 {
-  font-size: 1.2rem;
-  color: var(--azul-claro);
-  margin-bottom: 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-}
-
-.tarjeta-habilidad ul {
-  list-style: none;
-  padding: 0;
-}
-
-.tarjeta-habilidad li {
-  color: var(--gris-azulado);
-  margin-bottom: 0.25rem;
-}
-
-/* --- Sección Experiencia --- */
-.lista-experiencia {
-  list-style: none;
-  max-width: 800px;
-  margin: 0 auto;
-  position: relative;
-  padding-left: 2rem;
-}
-
-.lista-experiencia::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 2px;
-  background-color: var(--azul-marino);
-}
-
-.lista-experiencia li {
-  position: relative;
-  margin-bottom: 2rem;
-  padding-left: 1.5rem;
-}
-
-.lista-experiencia li::before {
-  content: "";
-  position: absolute;
-  left: -6px;
-  top: 5px;
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background-color: var(--azul-claro);
-  border: 2px solid var(--azul-noche);
-}
-
-.lista-experiencia h4 {
-  font-size: 1.5rem;
-  color: var(--blanco-hueso);
-}
-
-.lista-experiencia p {
-  color: var(--gris-azulado);
-}
-
-/* --- Sección Contacto --- */
-.seccion-contacto {
-  padding: 4rem 0;
-  text-align: center;
-}
-
-.subtitulo-contacto {
-  color: var(--gris-azulado);
-  margin-bottom: 3rem;
-  font-size: 1.1rem;
-}
-
-.formulario-contacto {
-  max-width: 700px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-.fila-formulario {
-  display: flex;
-  gap: 1.5rem;
-}
-
-.fila-formulario .grupo-formulario {
-  flex: 1;
-}
-
-.grupo-formulario {
-  text-align: left;
-}
-
-.grupo-formulario label {
-  display: block;
-  margin-bottom: 0.5rem;
-  color: var(--blanco-hueso);
-  font-size: 1rem;
-}
-
-.grupo-formulario input,
-.grupo-formulario textarea {
-  width: 100%;
-  padding: 0.75rem;
-  background-color: var(--azul-marino);
-  border: 1px solid var(--gris-azulado);
-  border-radius: 5px;
-  color: var(--blanco-hueso);
-  font-size: 1rem;
-  font-family: var(--fuente-principal);
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.grupo-formulario input:focus,
-.grupo-formulario textarea:focus {
-  outline: none;
-  border-color: var(--azul-claro);
-  box-shadow: 0 0 0 2px rgba(48, 160, 224, 0.2);
-}
-
-.grupo-formulario textarea {
-  resize: vertical;
-  min-height: 120px;
-}
-
-.boton-enviar {
-  align-self: center;
-  background-color: var(--azul-claro);
-  border: 1px solid var(--azul-claro);
-  color: var(--azul-noche);
-  padding: 0.75rem 2rem;
-  border-radius: 5px;
-  text-decoration: none;
-  font-size: 1.1rem;
-  font-weight: bold;
+button {
+  font-family: inherit;
   cursor: pointer;
-  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
 }
 
-.boton-enviar:hover {
-  background-color: transparent;
-  color: var(--azul-claro);
-  transform: translateY(-3px);
+img {
+  max-width: 100%;
+  height: auto;
 }
 
-/* --- Responsividad --- */
-@media (max-width: 768px) {
-  .menu-hamburguesa {
-    display: block;
-    order: 1;
-  }
-
-  .encabezado {
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 0 1.5rem;
-    height: 80px;
-    position: sticky;
-  }
-
-  .logo-encabezado {
-    order: 2;
-  }
-
-  .encabezado nav {
-    order: 3;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(10, 25, 47, 0.95);
-    backdrop-filter: blur(5px);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    transform: translateX(-100%);
-    transition: transform 0.3s ease-in-out;
-    z-index: 1100;
-  }
-
-  .encabezado nav ul {
-    display: flex;
-    flex-direction: column;
-    gap: 2.5rem;
-    margin-top: 0;
-    padding: 0;
-  }
-
-  .encabezado nav.menu-abierto {
-    transform: translateX(0);
-  }
-
-  .encabezado nav a {
-    font-size: 1.8rem;
-  }
-
-  .seccion-principal {
-    min-height: auto;
-    padding: 4rem 1rem;
-  }
-
-  .presentacion p {
-    font-size: 1.1rem;
-  }
-
-  .titulo-seccion {
-    font-size: 2rem;
-    margin-bottom: 2rem;
-  }
-
-  .subtitulo-seccion {
-    font-size: 1.75rem;
-    margin-bottom: 2rem;
-  }
-
-  .seccion-servicios,
-  .seccion-sobre-mi,
-  .seccion-contacto {
-    padding: 3rem 0;
-  }
-
-  .lista-experiencia {
-    padding-left: 1rem;
-  }
-
-  .lista-experiencia li {
-    padding-left: 1rem;
-  }
+::-webkit-scrollbar {
+  width: 8px;
 }
 
-@media (max-width: 480px) {
-  body {
-    background-size: 100% 300px, 100% 100px, 100% 100px;
-  }
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
 
-  .contenedor-principal {
-    padding: 0 1rem;
-  }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, var(--color-primario), var(--color-secundario));
+  border-radius: 4px;
+}
 
-  .presentacion img {
-    width: 120px;
-    height: 120px;
-  }
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, var(--color-secundario), var(--color-primario));
+}
 
-  .presentacion p {
-    font-size: 1rem;
-  }
+.tema-oscuro ::-webkit-scrollbar-track {
+  background: #2d2d2d;
+}
 
-  .titulo-seccion {
-    font-size: 1.8rem;
-  }
-
-  .subtitulo-seccion {
-    font-size: 1.5rem;
-  }
-
-  /* --- Responsividad para el formulario --- */
-  .fila-formulario {
-    flex-direction: column;
-    gap: 1.5rem;
-  }
+.tema-oscuro ::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, var(--color-primario), var(--color-secundario));
 }

@@ -6,13 +6,17 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import {
   faLaptopCode, faMobileAlt, faDatabase, faUsers, faFileAlt,
   faCodeBranch, faCogs, faCode, faDesktop, faVials, faTools,
-  faProjectDiagram, faServer, faBars, faTimes
+  faProjectDiagram, faServer, faBars, faTimes, faPaperPlane,
+  faEye, faCalculator, faEnvelope, faPhone, faClock, faUser,
+  faComment, faSpinner, faSun, faMoon
 } from '@fortawesome/free-solid-svg-icons'
 
 library.add(
   faLaptopCode, faMobileAlt, faDatabase, faUsers, faFileAlt,
   faCodeBranch, faCogs, faCode, faDesktop, faVials, faTools,
-  faProjectDiagram, faServer, faBars, faTimes
+  faProjectDiagram, faServer, faBars, faTimes, faPaperPlane,
+  faEye, faCalculator, faEnvelope, faPhone, faClock, faUser,
+  faComment, faSpinner, faSun, faMoon
 )
 
 const app = createApp(App)
