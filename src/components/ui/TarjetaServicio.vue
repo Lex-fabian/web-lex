@@ -19,7 +19,7 @@
         </div>
       </div>
       
-      <button class="boton-cotizar">
+      <button class="boton-cotizar" @click="cotizarProyecto">
         <font-awesome-icon icon="calculator" />
         Cotizar Proyecto
       </button>
@@ -40,6 +40,24 @@ defineProps({
     default: 0
   }
 })
+
+const props = defineProps({
+  servicio: {
+    type: Object,
+    required: true
+  },
+  indice: {
+    type: Number,
+    default: 0
+  }
+})
+
+const cotizarProyecto = () => {
+  const mensaje = `¡Hola! Me interesa cotizar el servicio de "${props.servicio.titulo}". ¿Podrías darme más información sobre precios y tiempos de entrega?`
+  const numeroWhatsApp = '593994755647'
+  const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`
+  window.open(urlWhatsApp, '_blank')
+}
 </script>
 
 <style scoped>
