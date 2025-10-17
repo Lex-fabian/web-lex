@@ -18,7 +18,7 @@ export const habilidades = [
     icono: 'code',
     titulo: 'Lenguajes',
     nivel: 88,
-    items: ['PHP', 'JavaScript', 'C#', 'Java', 'Python']
+    items: ['PHP', 'JavaScript', 'C#', 'Java', 'Python', 'Kotlin', 'Swift']
   },
   {
     id: 4,
@@ -53,7 +53,7 @@ export const herramientas = [
     id: 3,
     icono: 'project-diagram',
     titulo: 'Metodologías',
-    items: ['Kanban', 'Scrum', 'Agile', 'DevOps']
+    items: ['Kanban', 'Scrum', 'Agile']
   },
   {
     id: 4,
@@ -65,6 +65,6 @@ export const herramientas = [
     id: 5,
     icono: 'server',
     titulo: 'Plataformas',
-    items: ['Docker', 'Firebase', 'Google Console', 'Vercel']
+    items: ['Docker', 'Firebase', 'Google Console', 'Vercel', 'Supabase']
   }
 ]
